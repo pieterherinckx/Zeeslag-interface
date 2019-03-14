@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ toonBoot()
+comment1.params=raakX\ raakY
+comment1.target=boolean\ isRaak(int,\ int)
+comment2.params=testboot
+comment2.target=boolean\ overlaptBoot(Boot)
+numComments=3
