@@ -1,65 +1,79 @@
 import java.util.ArrayList;
 import java.util.Random;
-
-public class Zee {
-    private int rijen;
-    private int kolommen;
-   
+/**
+ * Write a description of class Zee here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
+public class Zee
+{
+    private int afmetingX;
+    private int afmetingY;
     private ArrayList<Boot> botenlijst;
-    private Random rg;
 
-    public Zee(int rijen, int kolommen) {
-        this.rijen = rijen;
-        this.kolommen = kolommen;
+    public Zee(int afmetingX, int afmetingY){
+        this.afmetingX = afmetingX;
+        this.afmetingY = afmetingY;
         this.botenlijst = new ArrayList<Boot>();
-        this.rg =  new Random();
     }
-   
-    public void voegBootToe(Boot boot){
-        botenlijst.add(boot);
+
+    public Zee(){
+        this(10,10);
     }
-   
- 
+
+    public void voegBootToe(Boot nieuweBoot){
+        if(!overlaptBoot(nieuweBoot)){
+            botenlijst.add(nieuweBoot);
+        }
+        else {
+            System.out.println("De boot kan niet toegevoegd worden omdat er een overlapping met een reeds bestaande boot zich voordoet.");
+        }
+    }
+
     public void toonBoten(){
-        for (Boot bootel: botenlijst){
-            bootel.toonBoot();
-        }  
+        for(Boot boot: botenlijst){
+            boot.toonBoot();
+        }
     }
-   
-    public boolean isRaak (int x, int y){
-        boolean raak = false;  
-        for (Boot bootel: botenlijst){
-            if (bootel.isRaak(x,y)){
+
+    public boolean isRaak(int raakX, int raakY){
+        boolean raak = false;
+        for(Boot boot: botenlijst){
+            if(boot.isRaak(raakX, raakY)){
                 raak = true;
             }
-        } 
-        return raak;   
+        }
+        return raak;
     }
-   
+
     public boolean overlaptBoot(Boot testboot){
-        boolean overlapt = false;   
-        for (Boot bootel: botenlijst){
-            if (bootel.overlaptBoot(testboot)){
+        boolean overlapt = false;
+        for(Boot boot: botenlijst){
+            if(boot.overlaptBoot(testboot)){
                 overlapt = true;
             }
         }
         return overlapt;
     }
-
-    public void willekeurigeBoot(){
+    
+    public void maakWillekeurigeBoot(){
+        Random rg = new Random();
         boolean horizontaal = rg.nextBoolean();
-        int begin_x = rg.nextInt(kolommen);
-        int begin_y = rg.nextInt(rijen);
-        int grootte;
+        int grootte = rg.nextInt(4) + 2;
+        int positieX;
+        int positieY;
         Boot boot;
-        if (horizontaal){
-            grootte = rg.nextInt(kolommen - begin_x) + 1;
-            boot = new HorizontaleBoot(begin_x, begin_y, grootte);
+        if(horizontaal){
+            positieX = rg.nextInt(afmetingX - grootte + 1) + 1;
+            positieY = rg.nextInt(afmetingY) + 1;
+            boot = new HorizontaleBoot(positieX, positieY, grootte);
         }
-        else{
-            grootte = rg.nextInt(rijen - begin_y) + 1;
-            boot = new VerticaleBoot(begin_x, begin_y, grootte);
+        else {
+            positieX = rg.nextInt(afmetingX) + 1;
+            positieY = rg.nextInt(afmetingY - grootte + 1) + 1;
+            boot = new VerticaleBoot(positieX, positieY, grootte);
         }
-         voegBootToe(boot);
+        voegBootToe(boot);
     }
 }
