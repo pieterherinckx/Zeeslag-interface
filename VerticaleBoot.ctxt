@@ -1,10 +1,14 @@
 #BlueJ class context
-comment0.params=x\ y\ grootte
-comment0.target=VerticaleBoot(int,\ int,\ int)
-comment1.params=
-comment1.target=void\ toonBoot()
-comment2.params=raakX\ raakY
-comment2.target=boolean\ isRaak(int,\ int)
-comment3.params=testboot
-comment3.target=boolean\ overlaptBoot(Boot)
-numComments=4
+comment0.target=VerticaleBoot
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ VerticaleBoot\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=positieX\ positieY\ grootte
+comment1.target=VerticaleBoot(int,\ int,\ int)
+comment2.params=
+comment2.target=VerticaleBoot()
+comment3.params=
+comment3.target=void\ toonBoot()
+comment4.params=x\ y
+comment4.target=boolean\ isRaak(int,\ int)
+comment5.params=testboot
+comment5.target=boolean\ overlaptBoot(Boot)
+numComments=6
